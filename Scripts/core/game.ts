@@ -46,10 +46,15 @@ function init() {
     setupRenderer(); // setup the default renderer
 	
     setupCamera(); // setup the camera
+    
+    //scene.fog=new THREE.FogExp2( 0xffffff, 0.015 );
+    scene.fog=new THREE.Fog( 0xffffff, 0.015, 100 );
+    console.log("Added Fog to scene...");
 	
     // add an axis helper to the scene
     axes = new AxisHelper(20);
     scene.add(axes);
+    console.log("Added Axis Helper to scene...");
     
     //Add a Plane to the Scene
     plane = new gameObject(
@@ -79,9 +84,11 @@ function init() {
     gui = new GUI();
     control = new Control(0.02, 60, 40);
     addControl(control);
+    console.log("Added Control to scene...");
     
     // Add framerate stats
     addStatsObject();
+    console.log("Added Stats to scene...");
 
     document.body.appendChild(renderer.domElement);
     gameLoop(); // render the scene	
